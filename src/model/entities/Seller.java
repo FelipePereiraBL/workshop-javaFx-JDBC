@@ -3,7 +3,8 @@ package model.entities;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Seller implements Serializable {
+public class Seller implements Serializable
+{
 
 	private static final long serialVersionUID = 1L;
 
@@ -15,10 +16,12 @@ public class Seller implements Serializable {
 	
 	private Department department;
 	
-	public Seller() {
+	public Seller() 
+	{
 	}
 
-	public Seller(Integer id, String name, String email, Date birthDate, Double baseSalary, Department department) {
+	public Seller(Integer id, String name, String email, Date birthDate, Double baseSalary, Department department)
+	{
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -27,56 +30,63 @@ public class Seller implements Serializable {
 		this.department = department;
 	}
 
-	public Integer getId() {
+	public Integer getId() 
+	{
 		return id;
 	}
-
-	public void setId(Integer id) {
+	public void setId(Integer id) 
+	{
 		this.id = id;
 	}
 
-	public String getName() {
+	public String getName() 
+	{
 		return name;
 	}
-
-	public void setName(String name) {
+	public void setName(String name) 
+	{
 		this.name = name;
 	}
 
-	public String getEmail() {
+	public String getEmail() 
+	{
 		return email;
 	}
-
-	public void setEmail(String email) {
+	public void setEmail(String email) 
+	{
 		this.email = email;
 	}
 
-	public Date getBirthDate() {
+	public Date getBirthDate() 
+	{
 		return birthDate;
 	}
-
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(Date birthDate)
+	{
 		this.birthDate = birthDate;
 	}
 
-	public Double getBaseSalary() {
+	public Double getBaseSalary() 
+	{
 		return baseSalary;
 	}
-
-	public void setBaseSalary(Double baseSalary) {
+	public void setBaseSalary(Double baseSalary)
+	{
 		this.baseSalary = baseSalary;
 	}
 
-	public Department getDepartment() {
+	public Department getDepartment() 
+	{
 		return department;
 	}
-
-	public void setDepartment(Department department) {
+	public void setDepartment(Department department) 
+	{
 		this.department = department;
 	}
 
 	@Override
-	public int hashCode() {
+	public int hashCode() 
+	{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
@@ -84,7 +94,8 @@ public class Seller implements Serializable {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj) 
+	{
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -92,16 +103,19 @@ public class Seller implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Seller other = (Seller) obj;
-		if (id == null) {
+		if (id == null) 
+		{
 			if (other.id != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} 
+		else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
 
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return "Seller [id=" + id + ", name=" + name + ", email=" + email + ", birthDate=" + birthDate + ", baseSalary="
 				+ baseSalary + ", department=" + department + "]";
 	}
