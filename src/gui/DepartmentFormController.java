@@ -1,25 +1,30 @@
 package gui;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import db.DbException;
+import gui.listeners.DataChangeListeners;
 import gui.util.Alerts;
 import gui.util.Constraints;
 import gui.util.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import model.entities.Department;
 import model.services.DepartmentServices;
 
 public class DepartmentFormController implements Initializable
 {
 	private DepartmentServices service;
+	
+	private List<DataChangeListeners>dataChangeListeners=new ArrayList<>();
 	
 	private Department entity;
 	
@@ -46,6 +51,11 @@ public class DepartmentFormController implements Initializable
 		this.service=service;
 	}
 	
+	public void subscribleChangeListener(DataChangeListeners listener)
+	{
+		dataChangeListeners.add(listener);
+	}
+	
 	@FXML
 	public  void onBtSaveAction(ActionEvent event)
 	{
@@ -61,6 +71,7 @@ public class DepartmentFormController implements Initializable
 		{
 			entity=getFormData();
 			service.saveOrUpdate(entity);
+			notifyChangeListeners();
 			Utils.currentStage(event).close();
 		}
 		catch (DbException e) 
@@ -70,6 +81,16 @@ public class DepartmentFormController implements Initializable
 		
 	}
 	
+	private void notifyChangeListeners() 
+	{
+		for (DataChangeListeners listener : dataChangeListeners)
+		{
+			listener.onChanged();
+			
+		}
+		
+	}
+
 	private Department getFormData() 
 	{
 		Department obj=new Department();
