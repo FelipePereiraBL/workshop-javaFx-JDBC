@@ -13,7 +13,8 @@ public class DB {
 
 	private static Connection conn = null;
 	
-	public static Connection getConnection() {
+	public static Connection getConnection() 
+	{
 		if (conn == null)
 		{
 			try 
